@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Campus294 - Residência 1</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="fontawesome/css/all.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" id="navbar__logo"><i class="fas fa-building"></i>campus294</a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item"><a href="index.html" class="navbar__links">início</a></li>
+        <li class="navbar__item"><a href="alojamento.html" class="navbar__links">alojamentos</a></li>
+        <li class="navbar__item"><a href="contacto.html" class="navbar__links">contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="residence">
+    <div class="residence__container">
+      <h1>Residência Porto Alta</h1>
+      <p class="residence__desc">Alojamento moderno com todas as comodidades para estudantes universitários.</p>
+
+      <div class="residence__gallery">
+            <button id="prevSlide">&#10094;</button>
+            <img id="galleryImage" src="images/res1_1.jpg" alt="Residência Porto Alta" />
+            <button id="nextSlide">&#10095;</button>
+      </div>
+
+      <!-- Lightbox Overlay -->
+      <div id="lightbox" class="lightbox hidden">
+        <span id="lightboxClose">&times;</span>
+        <span id="lightboxPrev" class="lightbox-arrow">&#10094;</span>
+        <img id="lightboxImage" src="" alt="Imagem em destaque" />
+        <span id="lightboxNext" class="lightbox-arrow">&#10095;</span>
+      </div>
+
+      <ul class="residence__features">
+        <li><i class="fas fa-bed"></i> Quartos individuais com cama de casal</li>
+        <li><i class="fas fa-wifi"></i> Internet de alta velocidade incluída</li>
+        <li><i class="fas fa-kitchen-set"></i> Cozinha partilhada totalmente equipada</li>
+        <li><i class="fas fa-shower"></i> WC privativo</li>
+        <li><i class="fas fa-map-marker-alt"></i> 10 minutos da FEUP</li>
+      </ul>
+
+      <div class="residence__cta">
+        <a href="contacto.html" class="btn">Pedir mais informações</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+    <footer class="footer__container">
+    <div class="footer__links">
+        <div class="footer__link--wrapper">
+        <div class="footer__link--items">
+            <h2>Sobre Nós</h2>
+            <a href="#">Pontos Próximos</a>
+            <a href="#">Testimonals</a>
+            <a href="#">Terms of service</a>
+        </div>
+        <div class="footer__link--items">
+            <h2>Contactos</h2>
+            <a href="#">E-mail</a>
+            <a href="#">Whatsapp</a>
+            <a href="#">Nº telemóvel</a>
+        </div>
+        </div>
+    </div>
+
+    <div class="social__media">
+        <div class="social__media--wrap">
+        <div class="footer__logo">
+            <a href="#" id="footer__logo"><i class="fas fa-building"></i> campus294</a>
+        </div>
+        <p class="website__rights">campus294 2025. All Rights Reserved</p>
+        <div class="social__icons">
+            <a class="social__icon--link" href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a class="social__icon--link" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a class="social__icon--link" href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </div>
+        </div>
+    </div>
+    </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
