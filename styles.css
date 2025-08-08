@@ -145,6 +145,8 @@ body {
         height: 50vh;
         z-index: -1;
         background: #131313;
+        border-top: 1px solid #5e636591;
+        border-bottom: 1px solid #5e636591;
     }
 
     .navbar__menu.active {
@@ -245,12 +247,13 @@ body {
   color: rgb(255, 255, 255);
   text-align: center;
   height: 100vh;
-  background: linear-gradient(rgba(0,0,0,0.6)), url('images/campus1.jpeg');
+  background: linear-gradient(rgba(0,0,0,0.6));
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   z-index: -1;
+  border-bottom: 1px solid #a0a3a5;
 }
 
 
@@ -297,7 +300,6 @@ body {
     z-index: 1;
     width: 100%;
     padding: 4rem 50px;
-    border-top: 1px solid #a0a3a5;
 }
 
 .main__content h1 {
@@ -427,6 +429,29 @@ body {
         padding: 12px 36px;
         margin: 2.5rem 0;
     }
+}
+
+/* Return Button */
+.return {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 1;
+}
+
+.return #btn {
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.return #btn:hover {
+    color: #7b8083;
 }
 
 /* Services Section */
@@ -596,9 +621,10 @@ body {
   padding: 0.75rem 2rem;
   font-size: 1.1rem;
   border-radius: 4px;
+  border: none;
+  cursor: pointer;
   background: linear-gradient(to right, #7b8083, #a0a3a5);
   color: #fff;
-  text-decoration: none;
   transition: background 0.3s ease;
 }
 
@@ -878,18 +904,37 @@ body {
 }
 
 /* Information Section */
+
+.container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: flex-start; /* Mudado de center para flex-start para melhor alinhamento */
+  padding: 20px;
+  max-width: 1400px; /* Adicionado limite máximo */
+  margin: 0 auto; /* Centralizar o container */
+}
+
+@media (max-width: 960px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .info {
-    padding: 4rem 2rem;
+    flex: 0.6; 
+    padding: 4rem 3rem; 
     text-align: center;
     background-color: #222222;
     color: #fff;
-    border-top: 1px solid #a0a3a5;
+    width: 100%; 
 }
 
 .info__container {
     max-width: 800px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    margin: 1rem auto; 
+    padding: 0 1rem;
 }
 
 .info h2 {
@@ -958,6 +1003,8 @@ body {
 /* Contact Section */
 
 .contactForm {
+    flex: 1;
+    position: relative;
     width: 100%;
     max-width: 600px;
     margin: 4rem auto;

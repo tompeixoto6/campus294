@@ -7,15 +7,41 @@ menu.addEventListener('click', function() {
     menuLinks.classList.toggle('active')
 })
 
+//banner foto fixa
+document.addEventListener("DOMContentLoaded", () => {
+  const banner = document.getElementById("banner");
+  const bgImage = banner.getAttribute("data-bg");
+
+  if (bgImage) {
+    banner.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6)), url('${bgImage}')`;
+  }
+});
+
+
+// Hide/Show parte 
+
+const myButton = document.getElementById("btn_hs");
+const myForm = document.getElementById("Form");
+
+myButton.addEventListener("click", () => {
+  myForm.classList.toggle("hidden");
+
+  if (myForm.classList.contains("hidden")) {
+    myButton.textContent = "Pedir mais informações";
+  } else {
+    myButton.textContent = "Fechar"; 
+  }
+});
+
 //residencia fotos
-  const images = [
-    'images/quarto1.jpg',
-    'images/quarto2.jpg',
-    'images/quarto3.jpg'
-  ];
+  const galleryImage = document.getElementById('galleryImage');
+  const imageList = galleryImage.dataset.images.split(',');
+
+  const images = imageList.map(img => `images/${img.trim()}`);
+
 
   let currentIndex = 0;
-  const galleryImage = document.getElementById('galleryImage');
+  
   const nextBtn = document.getElementById('nextSlide');
   const prevBtn = document.getElementById('prevSlide');
 
