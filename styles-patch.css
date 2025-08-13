@@ -1,0 +1,149 @@
+
+/* === styles-patch.css — drop-in fixes for mobile layout === */
+
+/* 1) Safer viewport space on iOS and Android */
+:root {
+  --page-padding: clamp(0.75rem, 2.5vw, 1.25rem);
+}
+
+/* 2) Make all media responsive by default */
+img, video, canvas, svg, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 3) Navbar: avoid overlaps on small screens */
+@media (max-width: 960px) {
+  .navbar { height: 64px; }
+  .navbar__container { height: 64px; }
+  #mobile-menu { top: 16px; }
+}
+
+/* 4) Banner: avoid 100vh issues and background-attachment fixed on mobile */
+#banner {
+  min-height: 60svh;           /* use safe viewport units to avoid URL bar jumps */
+  height: auto;
+  padding: 4rem var(--page-padding);
+  background-attachment: scroll;
+}
+@media (min-width: 961px) {
+  #banner { min-height: 80vh; }
+}
+#banner h1 { font-size: clamp(2rem, 6vw, 4rem); }
+#banner p  { font-size: clamp(1rem, 2.5vw, 1.25rem); }
+
+/* 5) Main hero container: remove forced 90vh on mobile */
+@media (max-width: 768px) {
+  .main__container {
+    display: block;
+    padding: 2rem var(--page-padding);
+    height: auto;
+  }
+  .main__content p { font-size: clamp(1rem, 3.5vw, 1.1rem); }
+}
+
+/* 6) Services grid: fully responsive cards without hard-coded px sizes */
+.services { padding: 2.5rem 0; }
+.services h1 { margin: 0 0 1.5rem; font-size: clamp(1.5rem, 4.5vw, 2.1rem); }
+.services p  { margin: 0 0 1.25rem; font-size: clamp(0.95rem, 3.2vw, 1.05rem); }
+
+.services__container {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  padding: 0 var(--page-padding);
+}
+
+.services__card {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  transform: none !important;          /* prevent scale causing overflow on mobile */
+  will-change: auto;
+}
+
+/* dark gradient overlay for text contrast */
+.services__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0) 100%);
+  pointer-events: none;
+}
+
+.services__card h2,
+.services__card p,
+.services__card button {
+  position: relative;
+  inset: auto;
+  left: auto;
+  top: auto;
+  margin: 0.25rem 0;
+}
+
+.services__card h2 { font-size: clamp(1.1rem, 3.8vw, 1.4rem); }
+.services__card p  { font-size: clamp(0.9rem, 3.2vw, 1rem); }
+.services__card button {
+  margin-top: 0.25rem;
+  font-size: clamp(0.9rem, 3.2vw, 1rem);
+}
+
+/* Disable hover zoom on touch devices */
+@media (hover: none) {
+  .services__card:hover { transform: none !important; }
+}
+
+/* 7) Residence gallery: make fully fluid */
+.residence { padding: 2.5rem var(--page-padding); }
+.residence__container h1 { font-size: clamp(1.6rem, 5.5vw, 2.2rem); }
+.residence__desc { font-size: clamp(1rem, 3.2vw, 1.15rem); }
+
+.residence__gallery {
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+.residence__gallery img {
+  width: min(100%, 720px);
+  height: auto !important;
+}
+.residence__gallery button {
+  font-size: clamp(1.4rem, 7vw, 2rem);
+}
+/* Lightbox controls: larger tap targets */
+.lightbox-arrow {
+  width: 56px; height: 56px;
+}
+
+/* 8) Return button: avoid covering header on small screens */
+.return {
+  top: auto;
+  bottom: 16px;
+  left: 16px;
+}
+@media (min-width: 961px) {
+  .return { top: 100px; bottom: auto; }
+}
+
+/* 9) Map: make iframe keep 16:9 and be fluid */
+.map { padding: 2.5rem var(--page-padding); }
+.map h1 { margin-bottom: 1rem; font-size: clamp(1.4rem, 4.5vw, 2rem); }
+.map iframe {
+  width: 100% !important;
+  aspect-ratio: 16 / 9;
+  height: auto !important;
+  border-radius: 12px;
+}
+
+/* 10) Footer: better wrapping on narrow screens */
+@media (max-width: 560px) {
+  .footer__links, .footer__link--wrapper { display: block; }
+  .footer__link--items { width: 100%; padding: 0 var(--page-padding); }
+}
