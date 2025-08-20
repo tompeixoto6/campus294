@@ -1,88 +1,369 @@
+/* styles-patch.css — mobile overrides for campus294
+   Loaded via <link media="(max-width: 960px)"> so no extra media query is required.
+   Goal: better readability, tap targets, and layout on small screens.
+*/
 
-/* styles-patch.css — mobile-first fixes/overrides */
-:root {
-  --container-pad: clamp(12px, 4vw, 24px);
+/* ---------- Global & typography ---------- */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
-/* 1) Global: prevent horizontal scroll and improve text sizing */
-html, body { max-width: 100%; overflow-x: hidden; }
-body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-
-/* 2) Navbar: ensure tap targets & stacking */
-.navbar { height: 64px; }
-.navbar__container { padding: 0 var(--container-pad); }
-#navbar__logo { font-size: 1.6rem; }
-.navbar__menu { gap: 0; }
-
-/* 3) Banner: avoid iOS issues with background-attachment fixed & huge 100vh */
-#banner {
-  height: min(60vh, 520px);
-  background-attachment: scroll; /* fix mobile jank */
-}
-@media (max-width: 480px) {
-  #banner { height: 44vh; }
-  #banner h1 { font-size: clamp(1.8rem, 8vw, 2.4rem); }
-  #banner p { font-size: clamp(1rem, 3.5vw, 1.2rem); }
-}
-/* Ensure background image fills correctly */
-.banner__image { object-fit: cover !important; }
-
-/* 4) Hero section spacing */
-.main__container { padding: 2.5rem var(--container-pad); }
-@media (max-width: 768px) {
-  .main__container { height: auto; }
-  .main__content h2 { font-size: clamp(1.4rem, 6vw, 1.8rem); }
-  .main__content p { font-size: clamp(1rem, 4vw, 1.1rem); }
+body {
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* 5) Services grid: prevent oversized cards on small screens */
-.services__container { padding: 0 var(--container-pad); }
-.services__card {
+/* Improve default spacing on small screens */
+p, ul, ol {
+  font-size: 1rem;
+}
+
+/* Minimum tap target sizes */
+a, button, .button, .btn {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Reduce heavy transitions on mobile */
+* {
+  transition-duration: 0.2s !important;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  height: 64px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.35);
+}
+
+.navbar__container {
+  padding: 0 16px;
+  height: 64px;
+}
+
+#navbar__logo {
+  font-size: 1.5rem;
+}
+
+.navbar__menu {
   width: 100%;
-  max-width: 520px;
-  height: 380px;
+  background: #131313;
+  border-top: 1px solid #5e636591;
+  border-bottom: 1px solid #5e636591;
 }
+
+.navbar__item {
+  padding: 0;
+}
+
+.navbar__links {
+  padding: 1rem 0.5rem;
+}
+
+/* Disable text-transparent hover on mobile for readability */
+.navbar__links:hover {
+  background: #1f1f1f;
+  -webkit-text-fill-color: initial;
+  -moz-text-fill-color: initial;
+  color: #fff;
+}
+
+/* Hamburger position */
+#mobile-menu {
+  top: 50%;
+  right: 1rem;
+  transform: translate(0, -50%);
+}
+
+/* ---------- Banner / hero ---------- */
+#banner {
+  height: 65vh;
+  background-attachment: scroll; /* avoids choppy fixed backgrounds on mobile */
+  padding: 2rem 1rem;
+  border-bottom: 1px solid #2c2c2c;
+}
+
+.banner__image {
+  object-fit: cover;
+  filter: brightness(0.55);
+}
+
+#banner h1 {
+  font-size: 2.4rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+#banner p {
+  font-size: 1.05rem;
+  opacity: 0.95;
+}
+
+/* ---------- Main section ---------- */
+.main__container {
+  padding: 2rem 1rem;
+}
+
+.main__content h1 {
+  font-size: 2rem;
+  padding: 0;
+}
+
+.main__content h2 {
+  font-size: 1.35rem;
+  margin-top: 0.25rem;
+}
+
+.main__content p {
+  font-size: 1rem;
+}
+
+.main__btn {
+  width: 100%;
+  padding: 12px 16px;
+}
+
+/* ---------- Return button ---------- */
+.return {
+  top: 76px; /* below navbar */
+  left: 12px;
+  z-index: 100;
+}
+
+.return #btn {
+  backdrop-filter: blur(2px);
+  background-color: rgba(0,0,0,0.35);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+}
+
+/* ---------- Services (cards grid) ---------- */
+.services {
+  padding: 2.5rem 1rem;
+}
+
+.services h1 {
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.services p {
+  font-size: 1rem;
+  margin: 0 0 1.25rem 0;
+}
+
+.services__container {
+  gap: 0.75rem;
+  padding: 0 0.25rem;
+}
+
+.services__card {
+  width: 100% !important;
+  height: 240px;
+  border-radius: 10px;
+  will-change: transform;
+}
+
+.services__card h2 {
+  top: auto;
+  bottom: 72px;
+  left: 16px;
+  right: 16px;
+  font-size: 1.2rem;
+}
+
+.services__card p {
+  top: auto;
+  bottom: 44px;
+  left: 16px;
+  right: 16px;
+  font-size: 0.95rem;
+}
+
+.services__card button {
+  top: auto;
+  bottom: 12px;
+  left: 16px;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+}
+
+.services__card:hover {
+  transform: none;  /* avoid unwanted zoom on touch */
+}
+
+/* ---------- Residence (gallery & features) ---------- */
+.residence {
+  padding: 2.5rem 1rem;
+}
+
+.residence__container {
+  width: 100%;
+}
+
+.residence__container h1 {
+  font-size: 1.8rem;
+}
+
+.residence__desc {
+  font-size: 1rem;
+}
+
+.residence__gallery {
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.residence__gallery img {
+  width: 100%;
+  height: auto;
+  max-height: 55vh;
+  object-fit: cover;
+}
+
+.residence__gallery button {
+  font-size: 2rem;
+  padding: 0.25rem 0.75rem;
+}
+
+.lightbox img {
+  max-width: 94vw;
+  max-height: 85vh;
+}
+
+.lightbox-arrow {
+  width: 44px;
+  height: 44px;
+  font-size: 2rem;
+}
+
+/* Feature list */
+.residence__features {
+  max-width: 100%;
+  margin: 1.5rem auto;
+  padding: 0 0.25rem;
+}
+
+.residence__features li {
+  font-size: 1rem;
+}
+
+/* CTA */
+.residence__cta .btn {
+  width: 100%;
+}
+
+/* ---------- Info + Contact layout ---------- */
+.container {
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.info {
+  padding: 1.5rem 1rem;
+}
+
+.info h2 {
+  font-size: 1.6rem;
+}
+
+.info__content h2 {
+  font-size: 1.6rem;
+}
+
+.info__content h3 {
+  font-size: 1.2rem;
+}
+
+.info__content li, .info__content p {
+  font-size: 1rem;
+}
+
+/* Contact form */
+.contactForm {
+  width: 100%;
+  max-width: 100%;
+  margin: 1rem 0 0 0;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.contactForm h2 {
+  font-size: 1.4rem;
+}
+
+.inputBox input,
+.inputBox textarea {
+  font-size: 1rem;
+  padding: 0.8rem;
+}
+
+.inputBox input[type="submit"] {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+}
+
+/* ---------- Map ---------- */
+.map {
+  padding: 2.5rem 1rem;
+}
+
+.map h1 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.map iframe {
+  width: 100% !important;
+  height: 280px !important;
+  border-radius: 8px;
+}
+
+/* ---------- Footer ---------- */
+.footer__container {
+  padding: 2rem 1rem;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+.footer__links {
+  justify-content: center;
+}
+
+.footer__link--wrapper {
+  flex-direction: column;
+}
+
+.footer__link--items {
+  width: 100%;
+  align-items: center;
+}
+
+.footer__link--items h2 {
+  margin-top: 0.5rem;
+}
+
+.social__media--wrap {
+  gap: 0.5rem;
+}
+
+.social__icons {
+  gap: 0.75rem;
+}
+
+/* ---------- Extra small tweaks (<=480px) ---------- */
 @media (max-width: 480px) {
-  .services__card { height: 300px; }
-  .services h2 { top: auto; bottom: 76px; left: 20px; }
-  .services__card p { top: auto; bottom: 46px; left: 20px; }
-  .services__card button { top: auto; bottom: 16px; left: 20px; }
+  #banner { height: 56vh; }
+  #banner h1 { font-size: 2rem; }
+  .main__content h1 { font-size: 1.7rem; }
+  .main__content h2 { font-size: 1.2rem; }
+  .services__card { height: 220px; }
+  .residence__gallery img { max-height: 50vh; }
 }
-
-/* 6) Map iframe: full bleed but safe */
-.map iframe { width: min(100%, 960px); height: 360px; }
-@media (max-width: 480px) { .map iframe { height: 280px; }}
-
-/* 7) Footer: stack nicely and avoid cramped columns */
-.footer__container { padding: 2.5rem var(--container-pad); }
-.footer__link--items { width: 100%; max-width: 280px; }
-.social__icons { width: auto; gap: 12px; }
-
-/* 8) Info & contact columns */
-.container { padding: var(--container-pad); gap: clamp(12px, 3vw, 24px); }
-.info { padding: 2rem var(--container-pad); }
-.contactForm { margin: 2rem auto; width: min(100%, 640px); }
-
-/* 9) Residence gallery: make images fluid and arrows tappable */
-.residence__gallery { gap: 0.5rem; }
-.residence__gallery img { width: 100% !important; height: auto !important; max-width: 960px; }
-.residence__gallery button { font-size: 1.6rem; padding: 0.25rem 0.5rem; }
-@media (pointer: coarse) {
-  .residence__gallery button { padding: 0.5rem 0.75rem; }
-}
-/* Lightbox safety on small screens */
-.lightbox img { max-width: 94vw; max-height: 80vh; }
-
-/* 10) Return button: keep visible but unobtrusive */
-.return { top: 72px; left: 12px; z-index: 100; }
-.return #btn { font-size: 1.1rem; padding: 0.35rem 0.6rem; }
-
-/* 11) Touch adjustments for navbar links */
-.navbar__links { padding: 0 0.75rem; }
-@media (max-width: 960px) {
-  .navbar__item { padding: 1rem 0; }
-  .navbar__links { padding: 1rem; }
-}
-
-/* 12) Fix Font Awesome icon sizing in tight spaces */
-.fas, .fab { line-height: 1; }
