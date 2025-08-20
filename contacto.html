@@ -1,122 +1,112 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="images/building.png">
-  <title>Contactos - campus294</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="styles-patch.css">
-
-  <link rel="stylesheet" href="fontawesome/css/all.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="images/building.png" rel="icon"/>
+<title>Contactos - campus294</title>
+<link href="styles.css" rel="stylesheet"/>
+<link href="styles-patch.css" media="(max-width: 960px)" rel="stylesheet"/>
+<link href="fontawesome/css/all.css" rel="stylesheet"/>
 </head>
 <body>
-  <!-- NavBar Section -->
-   <nav class="navbar">
-      <div class="navbar__container">
-        <a href="index.html" id="navbar__logo"><i class="fas fa-building"></i>campus294</a>
-        <div class="navbar__toggle" id="mobile-menu">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-        <ul class="navbar__menu">
-          <li class="navbar__item"><a href="alojamento.html" class="navbar__links">alojamentos</a></li>
-          <li class="navbar__item"><a href="pontos.html" class="navbar__links">pontos próximos</a></li>
-          <!-- <li class="navbar__btn">
+<!-- NavBar Section -->
+<nav class="navbar">
+<div class="navbar__container">
+<a href="index.html" id="navbar__logo"><i class="fas fa-building"></i>campus294</a>
+<div class="navbar__toggle" id="mobile-menu">
+<span class="bar"></span>
+<span class="bar"></span>
+<span class="bar"></span>
+</div>
+<ul class="navbar__menu">
+<li class="navbar__item"><a class="navbar__links" href="alojamento.html">alojamentos</a></li>
+<li class="navbar__item"><a class="navbar__links" href="pontos.html">pontos próximos</a></li>
+<!-- <li class="navbar__btn">
             <a href="/" class="button">
               Contacte-nos
             </a>
           </li> -->
-        </ul>
-      </div>
-  </nav>
-
-  <section id="banner" data-bg="images/campus2.jpeg">
-    <div class="banner__inner">
-      <h1>Contactos</h1>
-    </div>
-  </section>
-
-  <div class="container">
-
-   <!-- Information Section -->
-    <div class="info">
-      <div class="info__container">
-        <div class="info__content">
-          <h2>Informações</h2>
-          <p> <i class="fas fa-map-marker-alt"></i>  R. Dionísio dos Santos Silva 294, 4200-394 Porto</p>
-          <p> <i class="fas fa-envelope"></i>  <a href="mailto:campus294@email.com">campus294@email.com</a></p>
-          <p> <i class="fas fa-phone"></i> <a href="tel:+351919280589">+351 919 280 589</a></p>
-        </div>
-      </div>
-    </div>
-
-  <!-- Contact Section -->
-   <div class="contactForm">
-    <form id="contactForm" action="https://formspree.io/f/mvgqzkgv" method="POST">
-      <h2>Contacte-nos</h2>
-      <div class="inputBox">
-        <input type="text" name="nome" required="required">
-        <span>Nome</span>
-      </div>
-      <div class="inputBox">
-        <input type="email" name="email" placeholder="example@example.com" required="required">
-        <span>Email</span>
-      </div>
-      <div class="inputBox">
-        <input type="tel" name="tel" placeholder="+351..." required="required">
-        <span>Telemóvel</span>
-      </div>
-      <div class="inputBox">
-        <textarea placeholder="..." name="message" required="required"></textarea>
-        <span>Your Message</span>
-      </div>
-      <div class="inputBox">
-        <input type="submit" name="" value="Send">
-      </div>
-    </form>
-    <p id="formStatus"></p>
-   </div>
-
-  </div>
-
-
-  <!-- Footer Section -->
+</ul>
+</div>
+</nav>
+<section data-bg="images/campus2.jpeg" id="banner">
+<div class="banner__inner">
+<h1>Contactos</h1>
+</div>
+</section>
+<div class="container">
+<!-- Information Section -->
+<div class="info">
+<div class="info__container">
+<div class="info__content">
+<h2>Informações</h2>
+<p> <i class="fas fa-map-marker-alt"></i>  R. Dionísio dos Santos Silva 294, 4200-394 Porto</p>
+<p> <i class="fas fa-envelope"></i> <a href="mailto:campus294@email.com">campus294@email.com</a></p>
+<p> <i class="fas fa-phone"></i> <a href="tel:+351919280589">+351 919 280 589</a></p>
+</div>
+</div>
+</div>
+<!-- Contact Section -->
+<div class="contactForm">
+<form action="https://formspree.io/f/mvgqzkgv" id="contactForm" method="POST">
+<h2>Contacte-nos</h2>
+<div class="inputBox">
+<input name="nome" required="required" type="text"/>
+<span>Nome</span>
+</div>
+<div class="inputBox">
+<input name="email" placeholder="example@example.com" required="required" type="email"/>
+<span>Email</span>
+</div>
+<div class="inputBox">
+<input name="tel" placeholder="+351..." required="required" type="tel"/>
+<span>Telemóvel</span>
+</div>
+<div class="inputBox">
+<textarea name="message" placeholder="..." required="required"></textarea>
+<span>Your Message</span>
+</div>
+<div class="inputBox">
+<input name="" type="submit" value="Send"/>
+</div>
+</form>
+<p id="formStatus"></p>
+</div>
+</div>
+<!-- Footer Section -->
 <footer class="footer__container">
-  <div class="footer__links">
-    <div class="footer__link--wrapper">
-      <div class="footer__link--items">
-        <h2>Sobre Nós</h2>
-        <a href="#">How it works</a>
-        <a href="#">Testimonals</a>
-        <a href="#">Terms of service</a>
-      </div>
-      <div class="footer__link--items">
-        <h2>Contactos</h2>
-        <a href="#">E-mail</a>
-        <a href="#">Whatsapp</a>
-        <a href="#">Nº telemóvel</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="social__media">
-    <div class="social__media--wrap">
-      <div class="footer__logo">
-        <a href="#" id="footer__logo"><i class="fas fa-building"></i> campus294</a>
-      </div>
-      <p class="website__rights">campus294 2025. All Rights Reserved</p>
-      <div class="social__icons">
-        <a class="social__icon--link" href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a class="social__icon--link" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a class="social__icon--link" href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
-      </div>
-    </div>
-  </div>
+<div class="footer__links">
+<div class="footer__link--wrapper">
+<div class="footer__link--items">
+<h2>Sobre Nós</h2>
+<a href="#">How it works</a>
+<a href="#">Testimonals</a>
+<a href="#">Terms of service</a>
+</div>
+<div class="footer__link--items">
+<h2>Contactos</h2>
+<a href="#">E-mail</a>
+<a href="#">Whatsapp</a>
+<a href="#">Nº telemóvel</a>
+</div>
+</div>
+</div>
+<div class="social__media">
+<div class="social__media--wrap">
+<div class="footer__logo">
+<a href="#" id="footer__logo"><i class="fas fa-building"></i> campus294</a>
+</div>
+<p class="website__rights">campus294 2025. All Rights Reserved</p>
+<div class="social__icons">
+<a class="social__icon--link" href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a class="social__icon--link" href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+<a class="social__icon--link" href="#" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+</div>
+</div>
 </footer>
-
-
-  <script src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

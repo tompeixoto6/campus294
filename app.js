@@ -132,3 +132,23 @@ document.getElementById("contactForm").addEventListener("submit", async function
     status.style.color = "salmon";
   }
 });
+
+
+// Mobile menu enhancements: close on link tap and prevent layout jumps
+document.addEventListener('DOMContentLoaded', () => {
+  const menu = document.querySelector('#mobile-menu');
+  const menuLinks = document.querySelector('.navbar__menu');
+  const linkItems = document.querySelectorAll('.navbar__menu .navbar__links');
+
+  const toggleMenu = () => {
+    menu.classList.toggle('is-active');
+    menuLinks.classList.toggle('active');
+  };
+
+  if (menu && menuLinks) {
+    menu.addEventListener('click', toggleMenu);
+  }
+  linkItems.forEach(link => link.addEventListener('click', () => {
+    if (menu.classList.contains('is-active')) toggleMenu();
+  }));
+});
